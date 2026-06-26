@@ -1,0 +1,4 @@
+risk_id,project_id,title,category,description,impact,likelihood,mitigation,owner,status
+R001,P001,Model drift over time,Model Risks,AI model performance may degrade with new IDE versions,4,4,Monitor model performance quarterly,Alice Chen,Open
+R002,P001,Privacy violation,Data Risks,Potential exposure of developer code context,5,3,Implement data anonymization,Bob Smith,Mitigated
+R003,P002,Training data bias,Data Risks,Training data may not represent diverse coding styles,3,5,Diversify training dataset,Bob Smith,Open
