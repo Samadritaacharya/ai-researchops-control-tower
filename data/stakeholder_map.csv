@@ -1,0 +1,6 @@
+project_id,stakeholder_name,role,responsible,accountable,consulted,informed
+P001,Alice Chen,Researcher,Yes,No,No,No
+P001,Bob Smith,Engineer,No,Yes,Yes,No
+P001,Carol White,Product Manager,No,No,Yes,Yes
+P001,Dave Johnson,Legal/Compliance,No,No,Yes,Yes
+P001,Professor Emily Lee,Academic Partner,No,No,Yes,No
