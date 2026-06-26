@@ -1,0 +1,5 @@
+task_id,project_id,task_name,owner,status,clear_objective,has_owner,has_output,acceptance_criteria,dependencies,ai_metric,risk_level,timeline,stakeholder_impact
+T001,P001,Define intent taxonomy,Bob Smith,In Progress,Yes,Yes,Yes,Yes,None,Accuracy metric,High,2024-06-30,Critical
+T002,P001,Collect IDE telemetry,Alice Chen,Completed,Yes,Yes,Yes,Yes,T001,Data quality,Medium,2024-05-15,Critical
+T003,P002,Train intent classifier,Bob Smith,In Progress,Yes,Yes,No,No,T002,F1 score,High,2024-07-31,High
+T004,P001,Privacy review,Carol White,Not Started,No,Yes,No,No,T001,Compliance score,Critical,2024-07-15,Critical
