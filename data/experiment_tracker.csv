@@ -1,0 +1,4 @@
+experiment_id,project_id,track,experiment_name,hypothesis,baseline_metric,target_metric,actual_metric,dataset_size,status,start_date,end_date
+EXP001,P002,Intent Detection,Intent Classifier v1,Intent classification above 70 percent accuracy,55%,70%,68%,5000 samples,Completed,2024-03-01,2024-04-15
+EXP002,P002,Intent Detection,Intent Classifier v2,Context-aware intent classification above 75 percent,68%,75%,76%,8000 samples,Completed,2024-04-20,2024-05-30
+EXP003,P001,Suggestion Quality,Suggestion Ranking v1,Useful suggestions above 50 percent,40%,50%,48%,2000 interactions,Running,2024-05-01,
