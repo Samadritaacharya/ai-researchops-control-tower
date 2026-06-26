@@ -14,18 +14,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Generate project files
+      - name: Generate working project files
         run: |
           python - <<'PY'
           from pathlib import Path
+
           files = {}
-          files['requirements.txt'] = '''streamlit==1.32.0
+          files['requirements.txt'] = """streamlit==1.32.0
 pandas==2.1.3
 plotly==5.18.0
 numpy==1.24.3
 python-dateutil==2.8.2
-'''
-          files['.gitignore'] = '''__pycache__/
+"""
+          files['.gitignore'] = """__pycache__/
 *.py[cod]
 .venv/
 venv/
@@ -36,16 +37,16 @@ venv/
 .idea/
 .vscode/
 .streamlit/secrets.toml
-'''
-          files['LICENSE'] = '''MIT License
+"""
+          files['LICENSE'] = """MIT License
 
 Copyright (c) 2026 Samadrita Acharya
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files to deal in the Software without restriction, subject to including this copyright notice.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, subject to including this copyright notice.
 
 THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND.
-'''
-          files['README.md'] = '''# AI ResearchOps Control Tower
+"""
+          files['README.md'] = """# AI ResearchOps Control Tower
 
 An end-to-end Streamlit portfolio project for managing uncertain AI/ML software-engineering research projects.
 
@@ -87,58 +88,43 @@ pip install pytest
 pytest tests/
 ```
 
-## Project Structure
-```text
-app.py
-pages/
-utils/
-data/
-docs/
-tests/
-.github/workflows/
-.github/ISSUE_TEMPLATE/
-```
-
 ## Disclaimer
 This is an independent portfolio project inspired by public software-engineering research themes. It is not affiliated with JetBrains or any other organization.
 
 ## Contact
 GitHub: https://github.com/Samadritaacharya
 LinkedIn: https://www.linkedin.com/in/samadrita-acharya-a07266184/
-'''
-          files['data/sample_research_projects.csv'] = '''project_id,project_name,research_goal,primary_researcher,start_date,expected_end_date,status,goal_volatility,data_uncertainty,model_uncertainty,stakeholder_dependency,legal_complexity
+"""
+          files['data/sample_research_projects.csv'] = """project_id,project_name,research_goal,primary_researcher,start_date,expected_end_date,status,goal_volatility,data_uncertainty,model_uncertainty,stakeholder_dependency,legal_complexity
 P001,Proactive AI Coding Assistant,Evaluate proactive AI suggestions in IDE,Alice Chen,2024-01-15,2024-09-30,Active,7,6,8,7,6
 P002,Intent Detection Model,Build classifier for developer intent,Bob Smith,2024-02-01,2024-08-15,Active,5,4,6,5,3
 P003,Privacy Assessment,Evaluate data privacy risks,Carol White,2024-03-01,2024-07-31,Completed,8,7,5,8,9
-'''
-          files['data/risk_register.csv'] = '''risk_id,project_id,title,category,description,impact,likelihood,mitigation,owner,status
+"""
+          files['data/risk_register.csv'] = """risk_id,project_id,title,category,description,impact,likelihood,mitigation,owner,status
 R001,P001,Model drift over time,Model Risks,AI model performance may degrade with new IDE versions,4,4,Monitor model performance quarterly,Alice Chen,Open
 R002,P001,Privacy violation,Data Risks,Potential exposure of developer code context,5,3,Implement data anonymization,Bob Smith,Mitigated
 R003,P002,Training data bias,Data Risks,Training data may not represent diverse coding styles,3,5,Diversify training dataset,Bob Smith,Open
-'''
-          files['data/stakeholder_map.csv'] = '''project_id,stakeholder_name,role,responsible,accountable,consulted,informed
+"""
+          files['data/stakeholder_map.csv'] = """project_id,stakeholder_name,role,responsible,accountable,consulted,informed
 P001,Alice Chen,Researcher,Yes,No,No,No
 P001,Bob Smith,Engineer,No,Yes,Yes,No
 P001,Carol White,Product Manager,No,No,Yes,Yes
 P001,Dave Johnson,Legal/Compliance,No,No,Yes,Yes
 P001,Professor Emily Lee,Academic Partner,No,No,Yes,No
-'''
-          files['data/experiment_tracker.csv'] = '''experiment_id,project_id,track,experiment_name,hypothesis,baseline_metric,target_metric,actual_metric,dataset_size,status,start_date,end_date
+"""
+          files['data/experiment_tracker.csv'] = """experiment_id,project_id,track,experiment_name,hypothesis,baseline_metric,target_metric,actual_metric,dataset_size,status,start_date,end_date
 EXP001,P002,Intent Detection,Intent Classifier v1,Debug intent > 70% accuracy,55%,70%,68%,5000 samples,Completed,2024-03-01,2024-04-15
 EXP002,P002,Intent Detection,Intent Classifier v2,Debug intent with context > 75%,68%,75%,76%,8000 samples,Completed,2024-04-20,2024-05-30
 EXP003,P001,Suggestion Quality,Suggestion Ranking v1,Useful suggestions > 50%,40%,50%,48%,2000 interactions,Running,2024-05-01,
-'''
-          files['data/task_backlog.csv'] = '''task_id,project_id,task_name,owner,status,clear_objective,has_owner,has_output,acceptance_criteria,dependencies,ai_metric,risk_level,timeline,stakeholder_impact
+"""
+          files['data/task_backlog.csv'] = """task_id,project_id,task_name,owner,status,clear_objective,has_owner,has_output,acceptance_criteria,dependencies,ai_metric,risk_level,timeline,stakeholder_impact
 T001,P001,Define intent taxonomy,Bob Smith,In Progress,Yes,Yes,Yes,Yes,None,Accuracy metric,High,2024-06-30,Critical
 T002,P001,Collect IDE telemetry,Alice Chen,Completed,Yes,Yes,Yes,Yes,T001,Data quality,Medium,2024-05-15,Critical
 T003,P002,Train intent classifier,Bob Smith,In Progress,Yes,Yes,No,No,T002,F1 score,High,2024-07-31,High
 T004,P001,Privacy review,Carol White,Not Started,No,Yes,No,No,T001,Compliance score,Critical,2024-07-15,Critical
-'''
-          files['utils/__init__.py'] = '''"""Utility package for AI ResearchOps Control Tower."""
-'''
-          files['utils/scoring.py'] = '''"""Scoring functions for ResearchOps project management."""
-
-def calculate_uncertainty_score(goal_volatility, data_uncertainty, model_uncertainty, stakeholder_dependency, legal_complexity):
+"""
+          files['utils/__init__.py'] = '"""Utility package for AI ResearchOps Control Tower."""\n'
+          files['utils/scoring.py'] = """def calculate_uncertainty_score(goal_volatility, data_uncertainty, model_uncertainty, stakeholder_dependency, legal_complexity):
     return (goal_volatility + data_uncertainty + model_uncertainty + stakeholder_dependency + legal_complexity) / 5
 
 def calculate_task_completeness(task_dict):
@@ -157,12 +143,13 @@ def calculate_risk_score(impact, likelihood):
     return int(impact) * int(likelihood)
 
 def classify_risk(score):
-    if score >= 16: return 'High'
-    if score >= 8: return 'Medium'
+    if score >= 16:
+        return 'High'
+    if score >= 8:
+        return 'Medium'
     return 'Low'
-'''
-          files['utils/data_loader.py'] = '''"""CSV data loading helpers."""
-from pathlib import Path
+"""
+          files['utils/data_loader.py'] = """from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -176,9 +163,8 @@ def load_risks(): return load_csv('risk_register.csv')
 def load_tasks(): return load_csv('task_backlog.csv')
 def load_stakeholders(): return load_csv('stakeholder_map.csv')
 def load_experiments(): return load_csv('experiment_tracker.csv')
-'''
-          files['utils/visualization.py'] = '''"""Reusable Plotly visualizations."""
-import plotly.express as px
+"""
+          files['utils/visualization.py'] = """import plotly.express as px
 
 def project_status_chart(df):
     return px.pie(df, names='status', title='Project Status Distribution')
@@ -187,14 +173,16 @@ def uncertainty_bubble(df):
     return px.scatter(df, x='goal_volatility', y='data_uncertainty', size='stakeholder_dependency', color='status', hover_name='project_name', title='Goal Volatility vs Data Uncertainty')
 
 def risk_heatmap(df):
-    tmp = df.copy(); tmp['risk_score'] = tmp['impact'] * tmp['likelihood']
+    tmp = df.copy()
+    tmp['risk_score'] = tmp['impact'] * tmp['likelihood']
     return px.density_heatmap(tmp, x='likelihood', y='impact', z='risk_score', histfunc='avg', title='AI/ML Risk Heatmap')
 
 def experiment_bar(df):
-    return px.bar(df, x='experiment_name', y=df['actual_metric'].str.rstrip('%').astype(float), color='status', title='Experiment Actual Metrics')
-'''
-          files['utils/ui.py'] = '''"""Shared Streamlit UI helpers."""
-import streamlit as st
+    tmp = df.copy()
+    tmp['actual_value'] = tmp['actual_metric'].str.rstrip('%').astype(float)
+    return px.bar(tmp, x='experiment_name', y='actual_value', color='status', title='Experiment Actual Metrics')
+"""
+          files['utils/ui.py'] = """import streamlit as st
 
 def setup_page(title):
     st.set_page_config(page_title=title, page_icon='🔬', layout='wide', initial_sidebar_state='expanded')
@@ -203,8 +191,8 @@ def setup_page(title):
 
 def disclaimer():
     st.info('Independent portfolio project inspired by public software-engineering research themes. Not affiliated with JetBrains or any other organization.')
-'''
-          files['app.py'] = '''import streamlit as st
+"""
+          files['app.py'] = """import streamlit as st
 from utils.data_loader import load_project_data, load_risks, load_tasks
 from utils.scoring import calculate_task_completeness, calculate_uncertainty_score
 from utils.visualization import project_status_chart, uncertainty_bubble, risk_heatmap
@@ -228,9 +216,15 @@ st.plotly_chart(uncertainty_bubble(projects), use_container_width=True)
 st.plotly_chart(risk_heatmap(risks), use_container_width=True)
 st.subheader('Navigation')
 st.write('Use the sidebar to open the 7 ResearchOps modules.')
-'''
-          page_common = """import streamlit as st\nimport pandas as pd\nfrom utils.ui import setup_page, disclaimer\nfrom utils.data_loader import *\nfrom utils.scoring import *\nfrom utils.visualization import *\n"""
-          files['pages/1_Project_Intake.py'] = page_common + """
+"""
+          common = """import streamlit as st
+import pandas as pd
+from utils.ui import setup_page, disclaimer
+from utils.data_loader import *
+from utils.scoring import *
+from utils.visualization import *
+"""
+          files['pages/1_Project_Intake.py'] = common + """
 setup_page('1. Research Project Intake')
 disclaimer()
 projects = load_project_data()
@@ -240,11 +234,11 @@ with st.form('intake'):
     owner = st.text_input('Primary researcher')
     submitted = st.form_submit_button('Generate charter')
 if submitted:
-    st.markdown(f'### Draft Charter\\n**Project:** {name}\\n\\n**Goal:** {goal}\\n\\n**Owner:** {owner}')
+    st.markdown(f'### Draft Charter\n**Project:** {name}\n\n**Goal:** {goal}\n\n**Owner:** {owner}')
 st.subheader('Existing Projects')
 st.dataframe(projects, use_container_width=True)
 """
-          files['pages/2_Uncertainty_Matrix.py'] = page_common + """
+          files['pages/2_Uncertainty_Matrix.py'] = common + """
 setup_page('2. Uncertainty & Scope Matrix')
 projects = load_project_data()
 projects['uncertainty_score'] = projects.apply(lambda r: calculate_uncertainty_score(r.goal_volatility,r.data_uncertainty,r.model_uncertainty,r.stakeholder_dependency,r.legal_complexity), axis=1)
@@ -252,86 +246,76 @@ st.plotly_chart(uncertainty_bubble(projects), use_container_width=True)
 st.dataframe(projects[['project_id','project_name','uncertainty_score','goal_volatility','data_uncertainty','model_uncertainty','legal_complexity']], use_container_width=True)
 st.warning('High uncertainty projects need tighter decision logs, shorter review cycles, and explicit risk owners.')
 """
-          files['pages/3_Risk_Register.py'] = page_common + """
+          files['pages/3_Risk_Register.py'] = common + """
 setup_page('3. AI/ML Risk Register')
-risks = load_risks(); risks['risk_score'] = risks['impact'] * risks['likelihood']; risks['level'] = risks['risk_score'].apply(classify_risk)
+risks = load_risks()
+risks['risk_score'] = risks['impact'] * risks['likelihood']
+risks['level'] = risks['risk_score'].apply(classify_risk)
 st.plotly_chart(risk_heatmap(risks), use_container_width=True)
 st.dataframe(risks, use_container_width=True)
-st.subheader('Create/Edit Risk Example')
 with st.form('risk'):
-    st.text_input('Risk title'); st.selectbox('Category',['Data Risks','Model Risks','Deployment Risks','Organizational Risks']); st.slider('Impact',1,5,3); st.slider('Likelihood',1,5,3); st.text_area('Mitigation plan'); st.form_submit_button('Save draft')
+    st.text_input('Risk title')
+    st.selectbox('Category',['Data Risks','Model Risks','Deployment Risks','Organizational Risks'])
+    st.slider('Impact',1,5,3)
+    st.slider('Likelihood',1,5,3)
+    st.text_area('Mitigation plan')
+    st.form_submit_button('Save draft')
 """
-          files['pages/4_Task_Completeness.py'] = page_common + """
+          files['pages/4_Task_Completeness.py'] = common + """
 setup_page('4. Task Completeness Analyzer')
-tasks = load_tasks(); tasks['completeness'] = tasks.apply(calculate_task_completeness, axis=1)
+tasks = load_tasks()
+tasks['completeness'] = tasks.apply(calculate_task_completeness, axis=1)
 st.metric('Average completeness', f"{tasks.completeness.mean():.0f}%")
 st.dataframe(tasks, use_container_width=True)
 st.bar_chart(tasks.set_index('task_name')['completeness'])
 """
-          files['pages/5_Stakeholder_RACI.py'] = page_common + """
+          files['pages/5_Stakeholder_RACI.py'] = common + """
 setup_page('5. Stakeholder Map & RACI')
 stakeholders = load_stakeholders()
 st.dataframe(stakeholders, use_container_width=True)
 st.subheader('Communication Guidance')
 st.write('Researchers: weekly sync. Engineers: sprint-level updates. Product/Legal: milestone reviews. Sponsors: monthly summaries.')
 """
-          files['pages/6_Experiment_Tracker.py'] = page_common + """
+          files['pages/6_Experiment_Tracker.py'] = common + """
 setup_page('6. Experiment Tracker')
 experiments = load_experiments()
 st.plotly_chart(experiment_bar(experiments), use_container_width=True)
 st.dataframe(experiments, use_container_width=True)
 st.metric('Completed experiments', (experiments.status == 'Completed').sum())
 """
-          files['pages/7_Status_Communication.py'] = page_common + """
+          files['pages/7_Status_Communication.py'] = common + """
 setup_page('7. Status & Communication Generator')
 projects, risks, tasks = load_project_data(), load_risks(), load_tasks()
 choice = st.selectbox('Project', projects.project_name)
 readiness = calculate_handover_readiness(8,7,8,6,7)
 st.metric('Product handover readiness', f'{readiness:.0f}%')
 st.subheader('Weekly Status Draft')
-st.text_area('Generated update', f'''Project: {choice}\nSummary: Research activities progressing across task, risk, and experiment workstreams.\nRisks: Review open high-priority AI/ML risks.\nNext steps: Confirm owners, acceptance criteria, and handover readiness actions.''', height=180)
+st.text_area('Generated update', f'''Project: {choice}\nSummary: Research activities are progressing across task, risk, and experiment workstreams.\nRisks: Review open high-priority AI/ML risks.\nNext steps: Confirm owners, acceptance criteria, and handover readiness actions.''', height=180)
 st.subheader('Decision Log')
 st.dataframe(pd.DataFrame([{'Decision ID':'D001','Decision':'Use F1 score for intent classifier','Rationale':'Balances precision and recall','Status':'Open'}]), use_container_width=True)
 """
-          files['tests/test_scoring.py'] = '''from utils.scoring import calculate_uncertainty_score, calculate_task_completeness, calculate_handover_readiness, calculate_risk_score
+          files['tests/test_scoring.py'] = """from utils.scoring import calculate_uncertainty_score, calculate_task_completeness, calculate_handover_readiness, calculate_risk_score
 
-def test_uncertainty_score(): assert calculate_uncertainty_score(7,6,8,7,6) == 6.8
+def test_uncertainty_score():
+    assert calculate_uncertainty_score(7,6,8,7,6) == 6.8
 
-def test_risk_score(): assert calculate_risk_score(4,5) == 20
+def test_risk_score():
+    assert calculate_risk_score(4,5) == 20
 
-def test_handover_readiness(): assert calculate_handover_readiness(8,7,8,6,7) == 72.0
+def test_handover_readiness():
+    assert calculate_handover_readiness(8,7,8,6,7) == 72.0
 
 def test_task_completeness():
     task = {'clear_objective':'Yes','has_owner':'Yes','has_output':'No','acceptance_criteria':'Yes','dependencies':'T001','ai_metric':'F1 score','risk_level':'High','timeline':'2024-07-31','stakeholder_impact':'High'}
     assert calculate_task_completeness(task) > 80
-'''
-          files['conftest.py'] = '''import sys
+"""
+          files['conftest.py'] = """import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-'''
-          files['.github/workflows/ci.yml'] = '''name: CI
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ['3.9','3.11']
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-      - run: pip install -r requirements.txt pytest
-      - run: pytest tests/
-'''
+"""
           docs = ['project_charter','researchops_process_map','stakeholder_communication_plan','ai_ml_risk_framework','legal_admin_checklist','decision_log','final_case_study']
-          for d in docs:
-              files[f'docs/{d}.md'] = f'''# {d.replace('_',' ').title()}
+          for doc in docs:
+              files[f'docs/{doc}.md'] = f"""# {doc.replace('_',' ').title()}
 
 This document is part of the AI ResearchOps Control Tower portfolio project.
 
@@ -343,26 +327,33 @@ Project intake, uncertainty assessment, AI/ML risk management, stakeholder commu
 
 ## Disclaimer
 Independent portfolio project. Not affiliated with JetBrains or any other organization.
-'''
+"""
           files['docs/screenshots/README.md'] = '# Screenshots\n\nAdd Streamlit screenshots here for the GitHub README.\n'
           templates = {
-          'research_task':'Task objective\nOwner\nAcceptance criteria\nDependencies\nTimeline\nRisk level\nStakeholder impact',
-          'experiment':'Hypothesis\nBaseline metric\nTarget metric\nDataset\nMethod\nTimeline\nSuccess criteria',
-          'risk':'Category\nImpact\nLikelihood\nMitigation\nOwner\nClosure criteria',
-          'product_handover':'Readiness score\nChecklist\nBlockers\nStakeholder sign-off'}
+              'research_task':'Task objective\nOwner\nAcceptance criteria\nDependencies\nTimeline\nRisk level\nStakeholder impact',
+              'experiment':'Hypothesis\nBaseline metric\nTarget metric\nDataset\nMethod\nTimeline\nSuccess criteria',
+              'risk':'Category\nImpact\nLikelihood\nMitigation\nOwner\nClosure criteria',
+              'product_handover':'Readiness score\nChecklist\nBlockers\nStakeholder sign-off'
+          }
           for name, body in templates.items():
-              files[f'.github/ISSUE_TEMPLATE/{name}.md'] = f'---\nname: {name}\nabout: AI ResearchOps template\n---\n\n# {name.replace("_"," ").title()}\n\n{body}\n'
+              files[f'.github/ISSUE_TEMPLATE/{name}.md'] = f"---\nname: {name}\nabout: AI ResearchOps template\n---\n\n# {name.replace('_',' ').title()}\n\n{body}\n"
           for path, content in files.items():
-              p = Path(path); p.parent.mkdir(parents=True, exist_ok=True); p.write_text(content, encoding='utf-8')
+              p = Path(path)
+              p.parent.mkdir(parents=True, exist_ok=True)
+              p.write_text(content, encoding='utf-8')
           PY
       - name: Clean temporary payload files
         run: |
-          rm -f .project_payload.b64.part* .project_payload.b64.part05_* .project_payload.b64.part06_*
-          rm -f .github/workflows/publish_project.yml
-      - name: Commit final project
+          rm -f .project_payload.b64.part* .project_payload.b64.part05_*
+      - name: Validate generated project
+        run: |
+          python -m py_compile app.py pages/*.py utils/*.py tests/*.py
+          python -m pip install --upgrade pip pytest
+          pytest -q
+      - name: Commit generated project
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Upload complete AI ResearchOps Control Tower project" || echo "No changes"
+          git commit -m "Publish working AI ResearchOps Control Tower project" || echo "No changes to commit"
           git push
