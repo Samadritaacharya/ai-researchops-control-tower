@@ -1,0 +1,4 @@
+project_id,project_name,research_goal,primary_researcher,start_date,expected_end_date,status,goal_volatility,data_uncertainty,model_uncertainty,stakeholder_dependency,legal_complexity
+P001,Proactive AI Coding Assistant,Evaluate proactive AI suggestions in IDE,Alice Chen,2024-01-15,2024-09-30,Active,7,6,8,7,6
+P002,Intent Detection Model,Build classifier for developer intent,Bob Smith,2024-02-01,2024-08-15,Active,5,4,6,5,3
+P003,Privacy Assessment,Evaluate data privacy risks,Carol White,2024-03-01,2024-07-31,Completed,8,7,5,8,9
