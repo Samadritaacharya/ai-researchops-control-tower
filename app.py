@@ -3,7 +3,7 @@
 Run with:
     streamlit run app.py
 
-This is the landing page. The seven module pages live in the ``pages/`` folder
+This is the landing page. The module pages live in the ``pages/`` folder
 and appear automatically in the sidebar (Streamlit multipage convention).
 """
 
@@ -58,6 +58,14 @@ def inject_brand_css():
             margin-bottom: 16px;
             color: #7a5b13;
         }}
+        .module-card {{
+            background: #F7FBFC;
+            border: 1px solid #D8E7EA;
+            border-left: 5px solid {PRIMARY};
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin: 8px 0;
+        }}
         .footer {{
             margin-top: 40px;
             padding-top: 12px;
@@ -76,9 +84,10 @@ def main():
 
     st.title("🔬 AI ResearchOps Control Tower")
     st.markdown(
-        "A control tower for managing **uncertain AI/ML software-engineering "
+        "A PMO-style control tower for managing **uncertain AI/ML software-engineering "
         "research projects** — from intake and uncertainty scoring through risk, "
-        "tasks, stakeholders, experiments, and product handover."
+        "tasks, stakeholders, experiments, RAID, roadmap, governance, executive reporting, "
+        "and product handover."
     )
 
     # Disclaimer - clearly visible, not hidden.
@@ -86,7 +95,7 @@ def main():
         '<div class="disclaimer"><strong>Disclaimer:</strong> This is an '
         "independent portfolio project inspired by public software-engineering "
         "research themes. It is not affiliated with JetBrains or any other "
-        "organization.</div>",
+        "organization. All data is fictional or synthetic portfolio data.</div>",
         unsafe_allow_html=True,
     )
 
@@ -129,7 +138,7 @@ def main():
     if high_risks:
         st.warning(
             f"⚠️ {high_risks} high-severity risk(s) (score > 15) need attention. "
-            "See the **Risk Register** page."
+            "See the **Risk Register** and **RAID Log** pages."
         )
 
     # -----------------------------------------------------------------------
@@ -148,26 +157,28 @@ def main():
     # Navigation
     # -----------------------------------------------------------------------
     st.subheader("Modules")
-    st.markdown(
-        """
-Use the **sidebar** to navigate, or jump straight in:
-
-1. **Project Intake** — register new research projects and generate a charter.
-2. **Uncertainty Matrix** — score and plot project uncertainty.
-3. **Risk Register** — manage the AI/ML risk taxonomy and heatmap.
-4. **Task Completeness** — score task readiness across nine dimensions.
-5. **Stakeholder RACI** — map stakeholders and responsibilities.
-6. **Experiment Tracker** — track ML experiments and success rates.
-7. **Status & Communication** — generate weekly status reports.
-
-A **Product Handover Readiness** scorecard is built into the Status &
-Communication workflow and the docs.
-        """
-    )
+    modules = [
+        ("Project Intake", "Register new research projects and generate a charter."),
+        ("Uncertainty Matrix", "Score and plot project uncertainty."),
+        ("Risk Register", "Manage AI/ML risk taxonomy and heatmap."),
+        ("Task Completeness", "Score task readiness across nine dimensions."),
+        ("Stakeholder RACI", "Map stakeholders and responsibilities."),
+        ("Experiment Tracker", "Track ML experiments and success rates."),
+        ("Status & Communication", "Generate weekly status reports and handover readiness."),
+        ("RAID Log", "Track risks, assumptions, issues, and dependencies."),
+        ("Roadmap View", "Visualize milestones, owners, blockers, and handover timeline."),
+        ("Executive Steering Report", "Create leadership-ready RAG, KPI, and risk summaries."),
+        ("AI Governance Checklist", "Review data privacy, model quality, explainability, security, adoption, and handover controls."),
+    ]
+    for title, description in modules:
+        st.markdown(
+            f'<div class="module-card"><strong>{title}</strong><br>{description}</div>',
+            unsafe_allow_html=True,
+        )
 
     st.markdown(
         '<div class="footer">AI ResearchOps Control Tower &middot; '
-        '<a href="https://github.com/" target="_blank">View on GitHub</a> &middot; '
+        '<a href="https://github.com/Samadritaacharya/ai-researchops-control-tower" target="_blank">View on GitHub</a> &middot; '
         "Independent portfolio project.</div>",
         unsafe_allow_html=True,
     )
