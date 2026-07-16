@@ -1,118 +1,122 @@
-# 🔬 AI ResearchOps Control Tower
+# AI ResearchOps Control Tower
 
-> PMO-style control tower for managing uncertain AI/ML research initiatives — from project intake, uncertainty scoring, risk tracking, RAID, RACI, experiments and roadmap through governance, executive reporting, and product handover readiness.
+A PMO-style control tower for managing uncertain AI/ML initiatives from intake and scope definition through risk, experiments, stakeholder governance, roadmap, steering communication, and product-handover readiness.
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![Streamlit](https://img.shields.io/badge/Streamlit-App-ff4b4b)
-![PMO](https://img.shields.io/badge/PMO-Governance-purple)
-![ResearchOps](https://img.shields.io/badge/AI-ResearchOps-teal)
-![CI](https://img.shields.io/badge/GitHub%20Actions-CI-green)
+[![CI](https://github.com/Samadritaacharya/ai-researchops-control-tower/actions/workflows/ci.yml/badge.svg)](https://github.com/Samadritaacharya/ai-researchops-control-tower/actions/workflows/ci.yml)
 
-> **Disclaimer:** This is an independent portfolio project inspired by public software-engineering research and AI project-management themes. It is **not affiliated with JetBrains or any other organization**. All data is fictional/synthetic portfolio data.
+**Live application:** [ai-researchops-control-tower.streamlit.app](https://ai-researchops-control-tower.streamlit.app/)  
+**Portfolio owner:** [Samadrita Acharya](https://www.linkedin.com/in/samadrita-acharya-a07266184/)
 
----
+## Recruiter quick view
 
-## Demo
-
-- **Live app:** [Open the AI ResearchOps Control Tower](https://ai-researchops-control-tower.streamlit.app/)
-- **Screenshots:** See `assets/screenshots/` after adding exported screenshots.
-- **Demo data:** Included in the repository so the app runs out of the box.
-
----
-
-## Live demo workflow
-
-1. Open the live app.
-2. Use the sidebar input panel to enter an AI initiative, project stage, risk level and governance maturity.
-3. Click **Generate PMO focus**.
-4. Review the generated PMO focus recommendation.
-5. Use the multipage sidebar to explore intake, uncertainty, risk, RACI, experiments, RAID, roadmap, steering report and governance checklist.
-
----
+| Area | Evidence in this project |
+|---|---|
+| Business problem | AI/ML initiatives combine technical uncertainty, evolving scope, data dependencies, governance risk, and difficult handovers. |
+| Product solution | A multi-page Streamlit control tower for Research Operations and Technical PM/PMO workflows. |
+| Project governance | Intake, chartering, uncertainty scoring, task readiness, RAID, RACI, roadmap, decision logs, and steering reports. |
+| AI delivery | Experiment tracking, metric targets, model-risk categories, privacy, explainability, bias/fairness, security, and adoption readiness. |
+| Product handover | Readiness checks connect research outputs to operational ownership and product delivery. |
+| Engineering | Python, modular Streamlit pages, Pandas/NumPy/Plotly, pytest, compile checks, and GitHub Actions. |
+| Data/privacy | Uses fictional initiatives and synthetic portfolio data only. |
 
 ## Business problem
 
-AI/ML research projects are often uncertain. Scope changes, unclear acceptance criteria, data dependencies, privacy constraints, experiment risk, stakeholder misalignment and weak product handover can make execution difficult.
-
-This project demonstrates how a technical PM / PMO analyst can create structure around uncertain AI initiatives through governance, risk tracking, task readiness, stakeholder alignment, experiment visibility, roadmap planning, and executive communication.
-
----
+AI initiatives are harder to govern than standard delivery projects because scope, data, model quality, acceptance criteria, privacy, and product feasibility can change during experimentation. Without a structured operating model, teams can lose visibility into blockers, decisions, risk ownership, and handover readiness.
 
 ## Solution
 
-The Control Tower gives a Research Operations / Technical Project Manager a single place to track what matters:
+The Control Tower provides one decision-oriented workspace for:
 
 - project intake and chartering
-- uncertainty scoring
-- risk register and RAID log
-- task readiness
-- stakeholder RACI
-- experiment tracking
-- roadmap and blockers
-- executive steering report
-- AI governance checklist
-- product handover readiness
+- uncertainty and scope scoring
+- AI/ML risk registers
+- task-completeness and readiness analysis
+- stakeholder maps and RACI
+- experiment baselines, targets, and actuals
+- status reporting and decision logs
+- RAID management
+- milestone roadmaps and blockers
+- executive steering reports
+- AI governance checklists
+- product-handover readiness
 
-It is built around a realistic fictional case study: a **Proactive AI Coding Assistant** research program with tracks for intent detection, suggestion quality, privacy/data, and product handover.
+The application uses a fictional **Proactive AI Coding Assistant** program with workstreams for intent detection, suggestion quality, privacy/data, and product handover.
 
----
+## Two-minute recruiter demo
 
-## Key features
+1. Open the [live app](https://ai-researchops-control-tower.streamlit.app/).
+2. Enter an AI initiative, project stage, risk level, and governance maturity.
+3. Click **Generate PMO focus**.
+4. Review the uncertainty, risk, and stakeholder views.
+5. Open the experiment tracker, RAID log, and roadmap.
+6. Finish with the steering report, governance checklist, and handover readiness.
 
-1. **Dashboard Overview** — portfolio KPIs and overview charts.
-2. **Project Intake Wizard** — register projects and generate a charter.
-3. **Uncertainty & Scope Matrix** — score and plot project uncertainty.
-4. **AI/ML Risk Register** — risk taxonomy, heatmap, and high-severity flags.
-5. **Task Completeness Analyzer** — nine-point task-readiness scoring.
-6. **Stakeholder Map & RACI** — responsibilities and communication cadence.
-7. **Experiment Tracker** — baseline, target, and actual metrics.
-8. **Status & Communication** — weekly reports, decision log, and handover readiness.
-9. **RAID Log** — risks, assumptions, issues, and dependencies.
-10. **Roadmap View** — milestones, owners, blockers, and handover timeline.
-11. **Executive Steering Report** — leadership-ready RAG status, KPIs, decisions needed, and top risks.
-12. **AI Governance Checklist** — privacy, model quality, explainability, bias/fairness, security, adoption, and operational readiness.
+## Core modules
 
----
-
-## Tech stack
-
-| Layer | Technology |
+| Module | Delivery question answered |
 |---|---|
-| App | Streamlit |
-| Language | Python |
-| Data | Pandas, NumPy |
-| Visualization | Plotly |
-| Testing | pytest |
-| CI | GitHub Actions |
-| Local setup | Windows PowerShell and macOS/Linux commands included |
+| Dashboard Overview | What is the overall health of the initiative? |
+| Project Intake Wizard | Is the initiative clearly defined and chartered? |
+| Uncertainty & Scope Matrix | Where is ambiguity highest? |
+| AI/ML Risk Register | Which model, data, governance, or adoption risks need ownership? |
+| Task Completeness Analyzer | Is the work ready to enter delivery? |
+| Stakeholder Map & RACI | Who is accountable, consulted, and informed? |
+| Experiment Tracker | Are model experiments progressing against measurable targets? |
+| Status & Communication | Which decisions and escalations need stakeholder attention? |
+| RAID Log | What risks, assumptions, issues, and dependencies affect delivery? |
+| Roadmap View | Which milestones, blockers, and owners determine handover timing? |
+| Executive Steering Report | What should leadership understand and decide? |
+| AI Governance Checklist | Are privacy, quality, explainability, security, and adoption controls ready? |
 
----
+## Quality and automation
 
-## Windows PowerShell quick start
+The repository includes a GitHub Actions workflow that:
 
-```powershell
-cd $HOME
+- installs the declared Python dependencies
+- compiles the application, page, utility, and test modules
+- runs the pytest suite on pushes and pull requests to `main`
+
+The live demo uses included fictional data and does not require an external API key.
+
+## Technology stack
+
+`Python 3.11` · `Streamlit` · `Pandas` · `NumPy` · `Plotly` · `pytest` · `GitHub Actions`
+
+## Run locally
+
+```bash
 git clone https://github.com/Samadritaacharya/ai-researchops-control-tower.git
 cd ai-researchops-control-tower
-py -m venv .venv
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\.venv\Scripts\Activate.ps1
-py -m pip install --upgrade pip
-py -m pip install -r requirements.txt
-py -m pytest tests
-py -m streamlit run app.py
+python -m venv .venv
 ```
 
-## Why this project is relevant to my target roles
+```bash
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
 
-This project directly connects to my profile across SAP Cloud Delivery Architecture / AIOps PMO, RWTH Management & Engineering, IBM/Kyndryl IT operations, and AI/ML research exposure.
+# macOS/Linux
+source .venv/bin/activate
+```
 
-It demonstrates practical skills for Technical Project Management, PMO, AI Transformation, Research Operations, Product Handover, Stakeholder Governance, cloud/AIOps-adjacent delivery environments and Digital Transformation.
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pytest -q
+python -m streamlit run app.py
+```
 
-## CV bullet
+## Skills demonstrated
 
-> Built an AI ResearchOps Control Tower using Python, Streamlit, Pandas, Plotly and GitHub Actions to manage AI/ML project intake, uncertainty scoring, risk tracking, RAID, stakeholder RACI, experiment metrics, governance controls and product handover readiness.
+Technical project management · AI transformation · Research Operations · AI/ML delivery governance · PMO · RAID · RACI · uncertainty management · stakeholder communication · experiment tracking · AI governance · product handover · executive reporting · Python engineering
 
-## Disclaimer
+## Why this project is relevant to my profile
 
-Independent portfolio project. Not affiliated with, endorsed by, or connected to JetBrains or any other organization. All data is fictional/synthetic sample data. No confidential SAP, IBM, Kyndryl, university, employer, or client data is used.
+This project connects my SAP Cloud Delivery Architecture/AIOps and PMO experience, RWTH Management & Engineering background, IBM/Kyndryl service operations, and applied AI/ML research exposure. It demonstrates how I bring delivery structure, stakeholder governance, and decision visibility to technically uncertain initiatives.
+
+## CV / LinkedIn project description
+
+> Built an AI ResearchOps Control Tower using Python, Streamlit, Pandas, Plotly, pytest, and GitHub Actions to manage AI/ML project intake, uncertainty, task readiness, risk, RAID, stakeholder RACI, experiment metrics, governance controls, roadmaps, steering communication, and product-handover readiness.
+
+## Responsible portfolio use
+
+This is an independent portfolio project. It is not affiliated with JetBrains or any other organization. All initiatives and data are fictional or synthetic, and no confidential SAP, IBM, Kyndryl, university, employer, or client data is used.
